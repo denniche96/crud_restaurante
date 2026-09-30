@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Restaurante</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+    <div class="contenedor">
+
+        <h1>🍽️ Administración de Menú</h1>
+
+        <div class="formulario">
+
+            <h2 id="tituloFormulario">Registrar plato</h2>
+
+            <input type="hidden" id="idPlato">
+
+            <div class="grupo">
+                <label>Nombre del plato</label>
+                <input
+                    type="text"
+                    id="nombre"
+                    placeholder="Ej: Bolón mixto"
+                >
+                <small id="errorNombre"></small>
+            </div>
+
+            <div class="grupo">
+                <label>Categoría</label>
+                <select id="categoria">
+                    <option value="">Seleccione una categoría</option>
+                    <option value="Desayuno">Desayuno</option>
+                    <option value="Almuerzo">Almuerzo</option>
+                    <option value="Bebida">Bebida</option>
+                    <option value="Postre">Postre</option>
+                </select>
+                <small id="errorCategoria"></small>
+            </div>
+
+            <div class="grupo">
+                <label>Precio</label>
+                <input
+                    type="number"
+                    id="precio"
+                    placeholder="Ej: 3.50"
+                    step="0.01"
+                >
+                <small id="errorPrecio"></small>
+            </div>
+
+            <div class="grupo">
+                <label>Stock</label>
+                <input
+                    type="number"
+                    id="stock"
+                    placeholder="Ej: 10"
+                >
+                <small id="errorStock"></small>
+            </div>
+
+            <div class="botones">
+                <button
+                    type="button"
+                    id="btnGuardar"
+                    onclick="guardarPlato()"
+                >
+                    Guardar
+                </button>
+
+                <button
+                    type="button"
+                    id="btnCancelar"
+                    onclick="cancelarEdicion()"
+                    class="cancelar"
+                    style="display: none;"
+                >
+                    Cancelar
+                </button>
+            </div>
+
+        </div>
+
+        <div class="lista">
+
+            <h2>Lista de platos</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Plato</th>
+                        <th>Categoría</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tablaPlatos">
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
