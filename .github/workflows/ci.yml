@@ -1,0 +1,38 @@
+name: CI - CRUD Restaurante
+
+on:
+  push:
+    branches:
+      - main
+      - feature/mejora-formulario
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  verificar-proyecto:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar código del repositorio
+        uses: actions/checkout@v4
+
+      - name: Verificar archivos principales
+        run: |
+          test -f index.html
+          test -f estilos.css
+          test -f script.js
+          echo "Los archivos principales del proyecto fueron encontrados correctamente."
+
+      - name: Generar reporte
+        run: |
+          echo "Reporte de integración continua" > reporte-ci.txt
+          echo "Proyecto: CRUD Restaurante" >> reporte-ci.txt
+          echo "Verificación de archivos: correcta" >> reporte-ci.txt
+          echo "Proceso CI ejecutado correctamente." >> reporte-ci.txt
+
+      - name: Guardar reporte
+        uses: actions/upload-artifact@v4
+        with:
+          name: reporte-ci
+          path: reporte-ci.txt
